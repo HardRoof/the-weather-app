@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Weather APP</title>
+    <link rel="shortcut icon" type="image/jpg" href="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"/> 
+  </head>
+  <body>
+    <header>
+      <form action="#" class="header__form">
+        <label for="city-name">City<abbr title="Required" aria-label="required">*</abbr></label>
+        <input
+          id="city-name"
+          type="text"
+          autocomplete="off"
+          spellcheck="true"
+          placeholder="Search Location"
+          value="Regina"
+        />
+        <span class="form__notFound" style="display: none">No matching location found!</span>
+        <button class="form__button" type="submit">Search</button>
+      </form>
+    </header>
+    <main class="container"></main>
+  </body>
+  <template>
+    <div class="card"></div>
+    <p class="card__condition"></p>
+    <p class="card__city"></p>
+    <p class="card__degrees"></p>
+    <div class="card__details">
+      <p class="details__feelsLike"></p>
+      <p class="details__wind"></p>
+      <p class="details__humidity"></p>
+    </div>
+    </div>
+  </template>
+</html>

@@ -1,0 +1,22 @@
+@import url(./normalize.css);
+
+:root {
+  font-size: 62.5%; /* To turn 1rem into 10px */
+  --light-black-color: #393939;
+
+  --shadow: 1px 2px 4px rgb(0 0 0 / 51%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p,
+h1 {
+  margin: 0;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif, system-ui, -apple-system, "Segoe UI", "Open Sans", "Helvetica Neue";
+  font-size: 1.6rem; /* To turn 1rem into 10px */
+}

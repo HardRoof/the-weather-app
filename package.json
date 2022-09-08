@@ -1,0 +1,38 @@
+{
+  "name": "the-weather-app",
+  "version": "1.0.0",
+  "description": "A weather forecast site using the weather API and compiled with webpack.",
+  "scripts": {
+    "build": "webpack --mode=development --watch --progress",
+    "release": "webpack --mode=production",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix-dry-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HardRoof/the-weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HardRoof/the-weather-app/issues"
+  },
+  "homepage": "https://github.com/HardRoof/the-weather-app#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
+    "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "2.7.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
