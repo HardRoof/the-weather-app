@@ -20,3 +20,51 @@ body {
   font-family: "Noto Sans", sans-serif, system-ui, -apple-system, "Segoe UI", "Open Sans", "Helvetica Neue";
   font-size: 1.6rem; /* To turn 1rem into 10px */
 }
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 3rem 4rem;
+}
+
+.card {
+  position: relative;
+  width: max-content;
+  min-width: 38rem;
+}
+.card__condition {
+  text-transform: capitalize;
+  font-size: 2.2rem;
+  letter-spacing: 0.1rem;
+}
+.card__city {
+  margin-bottom: 1rem;
+  font-size: 4rem;
+  text-transform: uppercase;
+  line-height: 3.5rem;
+  letter-spacing: 0.1rem;
+  font-weight: 800;
+}
+.card__degrees {
+  font-size: 15rem;
+  font-weight: 900;
+  font-family: "Nunito", sans-serif;
+  position: relative;
+}
+.card__details {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+  position: absolute;
+  border-left: 0.2rem solid rgb(148 134 134 / 50%);
+  top: 45%;
+  left: 22.5rem;
+  height: 10rem;
+  padding-left: 2.6rem;
+  justify-content: space-between;
+}
+.details__feelsLike {
+  position: relative;
+}
