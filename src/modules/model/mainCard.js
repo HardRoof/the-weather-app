@@ -1,4 +1,4 @@
-class mainCard {
+class MainCard {
   constructor(condition, city, degrees, feelsLike, wind, humidity) {
     this.condition = condition;
     this.city = city;
@@ -9,7 +9,7 @@ class mainCard {
   }
 
   fillMainCard() {
-    const cardInfo = document.querySelectorAll("p");
+    const cardInfo = document.querySelectorAll(".card p");
     const cardData = [this.condition, this.city, this.degrees, this.feelsLike, this.wind, this.humidity];
     for (let i = 0; i < cardInfo.length; i++) {
       cardInfo[i].textContent = cardData[i];
@@ -17,4 +17,4 @@ class mainCard {
   }
 }
 
-export default mainCard;
+export default MainCard;
