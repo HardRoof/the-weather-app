@@ -1,4 +1,5 @@
 @import url(./normalize.css);
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 :root {
   font-size: 62.5%; /* To turn 1rem into 10px */
@@ -17,8 +18,11 @@ h1 {
 }
 
 body {
-  font-family: "Noto Sans", sans-serif, system-ui, -apple-system, "Segoe UI", "Open Sans", "Helvetica Neue";
+  font-family: montserrat, sans-serif, system-ui, -apple-system, "Segoe UI", "Open Sans", "Helvetica Neue";
   font-size: 1.6rem; /* To turn 1rem into 10px */
+  height: 100vh;
+  display: grid;
+  grid-template-rows: max-content auto;
 }
 
 header {
@@ -29,6 +33,7 @@ header {
 
 .card {
   position: relative;
+  font-family: "Noto Sans";
   width: max-content;
   min-width: 38rem;
 }
@@ -38,7 +43,7 @@ header {
   letter-spacing: 0.1rem;
 }
 .card__city {
-  margin-bottom: 1rem;
+  margin: 0.5rem 0 1rem;
   font-size: 4rem;
   text-transform: uppercase;
   line-height: 3.5rem;
@@ -67,4 +72,70 @@ header {
 }
 .details__feelsLike {
   position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 4rem;
+}
+
+.dailyContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.dailyContainer__dailyCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3 {
+  margin: 0 0 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding-left: 1rem;
+}
+
+.dailyCard__max {
+  margin-bottom: 0.4rem;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+[alt="Condition"] {
+  height: 64px;
+}
+
+.celsius::after {
+  content: "°C";
+  position: absolute;
+  font-size: 0.5em;
+  font-weight: 600;
+}
+
+.fahrenheit::after {
+  content: "°F";
+  position: absolute;
+  font-size: 0.5em;
+  font-weight: 600;
+}
+
+.celsius--big::after {
+  position: absolute;
+  top: 1.8rem;
+  left: 17.3rem;
+  content: "°C";
+  font-size: 3rem;
+}
+
+.fahrenheit--big::after {
+  position: absolute;
+  top: 1.8rem;
+  left: 17.3rem;
+  content: "°F";
+  font-size: 3rem;
 }
