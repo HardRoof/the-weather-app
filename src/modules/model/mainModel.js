@@ -1,4 +1,5 @@
-import mainCard from "./mainCard";
+import MainCard from "./mainCard";
+import EightDaysCard from "./EightDaysCard";
 
 class Model {
   constructor() {
@@ -32,21 +33,24 @@ class Model {
     return data;
   }
 
-  async getFiveDayWeather(lat, lon) {
-    const URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${this.key}&units=metric`;
+  async getEightDaysWeather(lat, lon) {
+    const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely,alerts&units=metric&appid=20f7632ffc2c022654e4093c6947b4f4`;
     const response = await fetch(URL, { mode: "cors" });
     if (!response.ok) {
       throw Error(response.status);
     }
     const data = await response.json();
     console.log(data);
-    console.log(data.list.main);
     return data;
   }
 
   generateMainCard(condition, city, degrees, feelsLike, wind, humidity) {
-    let mainCardItem = new mainCard(condition, city, degrees, feelsLike, wind, humidity);
+    let mainCardItem = new MainCard(condition, city, degrees, feelsLike, wind, humidity);
     return mainCardItem;
+  }
+  generateEightDaysCard(eightDaysWeather) {
+    let eightDaysCardItem = new EightDaysCard(eightDaysWeather);
+    return eightDaysCardItem;
   }
 }
 
