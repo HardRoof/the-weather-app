@@ -11,7 +11,7 @@
   </head>
   <body>
     <header>
-      <form action="#" class="header__form">
+      <form action="#" class="header__form" id="theForm">
         <label for="city-name">City<abbr title="Required" aria-label="required">*</abbr></label>
         <input
           id="city-name"
@@ -23,6 +23,10 @@
         />
         <span class="form__notFound" style="display: none">No matching location found!</span>
         <button class="form__button" type="submit">Search</button>
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
       </form>
     </header>
     <main class="container"></main>
