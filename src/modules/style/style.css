@@ -23,6 +23,7 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows: max-content auto;
+  background-color: bisque;
 }
 
 header {
@@ -138,4 +139,78 @@ h3 {
   left: 17.3rem;
   content: "°F";
   font-size: 3rem;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 23px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The switcher */
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 23px;
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  content: "°C";
+  font-size: 1.2rem;
+  font-weight: bold;
+  height: 17px;
+  width: 17px;
+  left: 3px;
+  bottom: 3px;
+  border-radius: 50%;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(255 95 95);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(255 95 95);
+}
+
+input:checked + .slider::before {
+  -webkit-transform: translateX(17px);
+  -ms-transform: translateX(17px);
+  transform: translateX(17px);
+  content: "°F";
+}
+
+#city-name {
+  width: 24rem;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0 0 0.3rem 4.5rem;
+  color: #ffffff;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
 }
