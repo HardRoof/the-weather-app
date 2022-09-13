@@ -23,7 +23,7 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows: max-content auto;
-  background-color: bisque;
+  color: #ffffff;
 }
 
 header {
@@ -34,10 +34,12 @@ header {
 
 .card {
   position: relative;
-  font-family: "Noto Sans";
   width: max-content;
-  min-width: 38rem;
+  min-width: 40rem;
+  margin: 3rem 4rem;
+  font-family: "Noto Sans";
 }
+
 .card__condition {
   text-transform: capitalize;
   font-size: 2.2rem;
@@ -75,17 +77,26 @@ header {
   position: relative;
 }
 
+.details__feelsLike::before {
+  content: "FEELS LIKE: ";
+}
+
+.details__wind::before {
+  content: "WIND: ";
+}
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 3rem 4rem;
 }
 
 .dailyContainer {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+  padding: 1.6rem 4rem 0.2rem;
+  background-color: rgb(0 0 0 / 10%);
 }
 
 .dailyContainer__dailyCard {
@@ -108,7 +119,7 @@ h3 {
 }
 
 [alt="Condition"] {
-  height: 64px;
+  height: 70px;
 }
 
 .celsius::after {
@@ -186,6 +197,7 @@ h3 {
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  color: var(--light-black-color);
 }
 
 input:checked + .slider {
@@ -203,14 +215,24 @@ input:checked + .slider::before {
   content: "°F";
 }
 
+::placeholder {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+[for="city-name"] {
+  visibility: hidden;
+}
+
 #city-name {
   width: 24rem;
   height: 100%;
   border: none;
   outline: none;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0 0 0.3rem 4.5rem;
+  padding: 7px 1rem;
   color: #ffffff;
   font-size: 1.6rem;
   border-radius: 0.5rem;
+  background-color: rgb(0 0 0 / 30%);
+  text-transform: capitalize;
 }
