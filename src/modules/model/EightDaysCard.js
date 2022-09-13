@@ -4,7 +4,6 @@ class EightDaysCard {
   }
 
   fillEightDaysCard() {
-    console.log(this.data);
     const maxTemp = document.querySelectorAll(".dailyCard__max");
     const minTemp = document.querySelectorAll(".dailyCard__min");
     const img = document.querySelectorAll(".dailyContainer img");
