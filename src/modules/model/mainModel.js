@@ -8,17 +8,15 @@ class Model {
     this.imperial = "imperial";
   }
 
-  async geoCode(searchText) {
+  async getGeoCode(searchText) {
     try {
       const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchText}&appid=${this.key}`;
       const response = await fetch(URL, { mode: "cors" });
       const data = await response.json();
-      if (typeof data[0] === "undefined") {
-        console.log(1); // To handle unknown city
-      }
+      //console.log(data);
       return data[0];
     } catch (err) {
-      return console.log(err);
+      console.log(err, "Refresh page and try again later");
     }
   }
 
@@ -40,14 +38,36 @@ class Model {
       throw Error(response.status);
     }
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     return data;
+  }
+
+  createMainCard(currentWeather, geoLocation) {
+    const condition = currentWeather.weather[0].description;
+    const regionNamesInEnglish = new Intl.DisplayNames(["en"], { type: "region" }); // To convert CA to Canada, per example
+    const city = geoLocation.name + ", " + regionNamesInEnglish.of(currentWeather.sys.country);
+    const degrees = Math.round(currentWeather.main.temp);
+    const feelsLike = Math.round(currentWeather.main.feels_like);
+    const wind = this.convertFromMs(currentWeather.wind.speed) + " km/h";
+    const humidity = "HUMIDITY: " + currentWeather.main.humidity + "%";
+    const mainCard = this.generateMainCard(condition, city, degrees, feelsLike, wind, humidity);
+    mainCard.fillMainCard();
+  }
+
+  convertFromMs(speed) {
+    return (speed * 3.6).toFixed(2);
   }
 
   generateMainCard(condition, city, degrees, feelsLike, wind, humidity) {
     let mainCardItem = new MainCard(condition, city, degrees, feelsLike, wind, humidity);
     return mainCardItem;
   }
+
+  createEightDaysCard(eightDaysWeather) {
+    const eightDaysCard = this.generateEightDaysCard(eightDaysWeather);
+    eightDaysCard.fillEightDaysCard();
+  }
+
   generateEightDaysCard(eightDaysWeather) {
     let eightDaysCardItem = new EightDaysCard(eightDaysWeather);
     return eightDaysCardItem;
