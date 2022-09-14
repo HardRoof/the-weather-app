@@ -11,22 +11,17 @@
   </head>
   <body>
     <header>
-      <form action="#" class="header__form" id="theForm">
+      <form action="#" class="header__form" id="theForm" novalidate>
         <label for="city-name">City<abbr title="Required" aria-label="required">*</abbr></label>
-        <input
-          id="city-name"
-          type="text"
-          autocomplete="off"
-          spellcheck="true"
-          placeholder="Search Location"
-          value="Regina"
-        />
-        <span class="form__notFound" style="display: none">No matching location found!</span>
-        <button class="form__button" type="submit">Search</button>
+        <div class="searchBox">
+          <input id="city-name" type="text" autocomplete="off" placeholder="Search City" value="Regina" required />
+          <input type="image" src="./images/search-2905.svg" alt="Search" height="34px" />
+        </div>
         <label class="switch">
           <input type="checkbox" />
           <span class="slider round"></span>
         </label>
+        <span class="form__notFound" style="display: none">No matching location found!</span>
       </form>
     </header>
     <main class="container"></main>
