@@ -21,8 +21,6 @@ export default function (iconCode) {
   switch (iconCode) {
     case "01d":
       setDailyContainerBG("dailyContainer--black");
-      black;
-      white;
       return changeMainBg(clearSkyDay);
     case "01n":
       setDailyContainerBG("dailyContainer--white");
