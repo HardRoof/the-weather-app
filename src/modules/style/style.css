@@ -30,6 +30,7 @@ header {
   display: flex;
   justify-content: flex-end;
   padding: 3rem 4rem;
+  /* background-color: #393939; */
 }
 
 .card {
@@ -66,7 +67,7 @@ header {
   font-weight: 900;
   letter-spacing: 0.1rem;
   position: absolute;
-  border-left: 0.2rem solid rgb(148 134 134 / 50%);
+  border-left: 0.2rem solid rgb(255, 255, 255);
   top: 45%;
   left: 22.5rem;
   height: 10rem;
@@ -89,6 +90,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-shadow: var(--shadow);
 }
 
 .dailyContainer {
@@ -96,7 +98,15 @@ header {
   justify-content: space-between;
   gap: 2rem;
   padding: 1.6rem 4rem 0.2rem;
-  background-color: rgb(0 0 0 / 10%);
+  text-shadow: var(--shadow);
+}
+
+.dailyContainer--white {
+  background-color: rgba(255, 255, 255, 22%);
+}
+
+.dailyContainer--black {
+  background-color: rgb(0 0 0 / 15%);
 }
 
 .dailyContainer__dailyCard {
@@ -107,9 +117,9 @@ header {
 
 h3 {
   margin: 0 0 1.6rem;
+  padding-left: 1rem;
   font-size: 1.6rem;
   font-weight: 500;
-  padding-left: 1rem;
 }
 
 .dailyCard__max {
@@ -225,14 +235,36 @@ input:checked + .slider::before {
 }
 
 #city-name {
-  width: 24rem;
+  width: 28rem;
   height: 100%;
   border: none;
   outline: none;
-  padding: 7px 1rem;
+  padding: 7px 3.4rem 7px 1rem;
   color: #ffffff;
   font-size: 1.6rem;
-  border-radius: 0.5rem;
-  background-color: rgb(0 0 0 / 30%);
+  border-radius: 5px 5px 0 0;
+  background-color: rgb(0 0 0 / 25%);
   text-transform: capitalize;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 2px solid #f5f5f5;
+}
+
+[type="image"] {
+  position: absolute;
+  right: 0;
+  padding: 7px;
+  transition: all 0.2s ease;
+}
+
+[type="image"]:active {
+  transform: scale(0.9);
+}
+
+.error--active {
+  display: block !important;
 }
