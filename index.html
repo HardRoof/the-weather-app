@@ -14,13 +14,9 @@
       <form action="#" class="header__form" id="theForm" novalidate>
         <label for="city-name">City<abbr title="Required" aria-label="required">*</abbr></label>
         <div class="searchBox">
-          <input id="city-name" type="text" autocomplete="off" placeholder="Search City" value="Regina" required />
+          <input id="city-name" type="text" autocomplete="off" placeholder="Search City" value="regina" required />
           <input type="image" src="./images/search-2905.svg" alt="Search" height="34px" />
         </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider round"></span>
-        </label>
         <span class="form__notFound" style="display: none">No matching location found!</span>
       </form>
     </header>
@@ -28,6 +24,10 @@
   <script defer src="main.bundle.js"></script></body>
   <template>
     <div class="card">
+      <label class="switch">
+        <input type="checkbox" />
+        <span class="slider round"></span>
+      </label>
       <p class="card__condition"></p>
       <p class="card__city"></p>
       <p class="card__degrees celsius--big"></p>
