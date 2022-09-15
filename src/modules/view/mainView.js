@@ -22,12 +22,15 @@ class View {
     span.classList.add("error--active");
   }
 
+  showUnknownCityError(span) {
+    span.textContent = "✖ Location not found. Please try another city.";
+    span.classList.add("error--active");
+  }
+
   CheckEmpty(input, span) {
     if (input.validity.valid) {
       span.textContent = ""; // Reset to initial state
       span.className = "form__notFound";
-    } else {
-      this.showEmptyError(input, span);
     }
   }
 }
