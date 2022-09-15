@@ -30,7 +30,6 @@ header {
   display: flex;
   justify-content: flex-end;
   padding: 3rem 4rem;
-  /* background-color: #393939; */
 }
 
 .card {
@@ -102,7 +101,7 @@ header {
 }
 
 .dailyContainer--white {
-  background-color: rgba(255, 255, 255, 22%);
+  background-color: rgba(255, 255, 255, 30%);
 }
 
 .dailyContainer--black {
@@ -164,10 +163,12 @@ h3 {
 
 /* The switch - the box around the slider */
 .switch {
-  position: relative;
+  position: absolute;
   display: inline-block;
   width: 40px;
   height: 23px;
+  right: 0;
+  top: 5px;
 }
 
 /* Hide default HTML checkbox */
@@ -184,7 +185,7 @@ h3 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: white;
   border-radius: 23px;
   cursor: pointer;
   -webkit-transition: 0.4s;
@@ -204,18 +205,11 @@ h3 {
   left: 3px;
   bottom: 3px;
   border-radius: 50%;
-  background-color: white;
+  background-color: #706e6e;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: var(--light-black-color);
-}
-
-input:checked + .slider {
-  background-color: rgb(255 95 95);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px rgb(255 95 95);
+  color: white;
+  text-shadow: none;
 }
 
 input:checked + .slider::before {
@@ -252,6 +246,7 @@ input:checked + .slider::before {
   align-items: center;
   position: relative;
   border-bottom: 2px solid #f5f5f5;
+  border-radius: 2px;
 }
 
 [type="image"] {
@@ -267,4 +262,7 @@ input:checked + .slider::before {
 
 .error--active {
   display: block !important;
+  position: absolute;
+  font-size: 1.3rem;
+  max-width: 28rem;
 }
