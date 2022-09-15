@@ -4,7 +4,6 @@ class Controller {
     this.view = view;
     document.body.addEventListener("submit", (e) => this.searchWeather(e));
     document.body.addEventListener("input", () => this.checkInput());
-    document.querySelector(".switch input").addEventListener("click", (e) => this.changeUnits(e));
   }
 
   getElements() {
@@ -14,8 +13,9 @@ class Controller {
     const wind = document.querySelector(".details__wind");
     const main = document.querySelector(".container");
     const span = document.querySelectorAll(".form__notFound")[0];
+    const switchBtn = document.querySelector(".switch input");
 
-    return { input, degreeBig, degreeSmall, wind, main, span };
+    return { input, degreeBig, degreeSmall, wind, main, span, switchBtn };
   }
 
   checkInput() {
@@ -24,29 +24,35 @@ class Controller {
 
   async searchWeather(e) {
     e.preventDefault();
-    switch (!this.getElements().input.validity.valid) {
-      case true:
-        return this.view.showEmptyError(this.getElements().span);
+    if (!this.getElements().input.validity.valid) return this.view.showEmptyError(this.getElements().span);
+    const geoLocation = await this.getGeoLocation();
+    if (typeof geoLocation === "undefined") {
+      return this.view.showUnknownCityError(this.getElements().span);
     }
-    const weatherData = await this.getWeatherData();
-    if (typeof weatherData === "undefined") {
-      console.log("test");
-    }
+    const currentWeather = await this.getCurrentWeather(geoLocation);
+    const eightDaysWeather = await this.getEightDaysWeather(geoLocation);
     if (this.getElements().main.hasChildNodes()) this.view.deleteForecast(this.getElements().main);
     this.view.showForecast(0);
-    this.model.createMainCard(weatherData.currentWeather, weatherData.geoLocation);
+    this.getElements().switchBtn.addEventListener("click", (e) => this.changeUnits(e));
+    this.model.createMainCard(currentWeather, geoLocation);
     this.view.showForecast(1);
-    this.model.createEightDaysCard(weatherData.eightDaysWeather);
-    this.view.changeBackground(weatherData.currentWeather);
+    this.model.createEightDaysCard(eightDaysWeather);
+    this.view.changeBackground(currentWeather);
   }
 
-  async getWeatherData() {
-    //split in three functions
-    const geoLocation = await this.model.getGeoCode(this.getElements().input.value);
-    const currentWeather = await this.model.getCurrentWeather(geoLocation.lat, geoLocation.lon);
-    const eightDaysWeather = await this.model.getEightDaysWeather(geoLocation.lat, geoLocation.lon);
+  async getGeoLocation() {
+    const geoLocation = await this.model.fetchGeoLocation(this.getElements().input.value);
+    return geoLocation;
+  }
 
-    return { geoLocation, currentWeather, eightDaysWeather };
+  async getCurrentWeather(geoLocation) {
+    const currentWeather = await this.model.fetchCurrentWeather(geoLocation.lat, geoLocation.lon);
+    return currentWeather;
+  }
+
+  async getEightDaysWeather(geoLocation) {
+    const eightDaysWeather = await this.model.fetchEightDaysWeather(geoLocation.lat, geoLocation.lon);
+    return eightDaysWeather;
   }
 
   changeUnits() {
