@@ -5,7 +5,6 @@ import Controller from "./modules/controller/mainController";
 
 const model = new Model();
 const view = new View();
-// eslint-disable-next-line no-unused-vars
 const controller = new Controller(model, view);
 
 if (window.history.replaceState) {
