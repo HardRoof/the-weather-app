@@ -12,10 +12,11 @@ class EightDaysCard {
       maxTemp[i].textContent = Math.round(this.data.daily[i].temp.max);
       minTemp[i].textContent = Math.round(this.data.daily[i].temp.min);
       img[i].src = `http://openweathermap.org/img/wn/${this.data.daily[i].weather[0].icon}@2x.png`;
-      const dayOfWeek = this.getDayOfWeek(new Date(this.data.daily[i].dt * 1000).getDay()); //Turns Unix Timestamp to week day
+      const dayOfWeek = this.getDayOfWeek(new Date(this.data.daily[i].dt * 1000).getDay()); // Turns Unix Timestamp to week day
       day[i].textContent = dayOfWeek;
     }
   }
+
   getDayOfWeek(number) {
     switch (number) {
       case 0:
@@ -32,6 +33,7 @@ class EightDaysCard {
         return "Friday";
       case 6:
         return "Saturday";
+      default:
     }
   }
 }
