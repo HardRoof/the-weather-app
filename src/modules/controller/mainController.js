@@ -1,10 +1,12 @@
+const lookup = require("country-code-lookup");
+
 class Controller {
   constructor(model, view) {
     this.model = model;
     this.view = view;
     document.body.addEventListener("submit", (e) => this.searchWeather(e));
     document.body.addEventListener("input", () => this.checkInput());
-    window.addEventListener("load", (e) => this.startHomePageForecast(e));
+    window.addEventListener("load", () => this.view.setHomePageBg());
   }
 
   getElements() {
@@ -46,8 +48,28 @@ class Controller {
   }
 
   async getGeoLocation() {
-    const geoLocation = await this.model.fetchGeoLocation(this.getElements().input.value);
+    const inputValue = this.getElements().input.value;
+    const geoLocation = await this.model.fetchGeoLocation(this.convertCountryNameToCode(inputValue));
     return geoLocation;
+  }
+
+  convertCountryNameToCode(input) {
+    const inputArray = input.split(",");
+    const cityName = inputArray[0];
+    const country = input.substring(input.lastIndexOf(",") + 1);
+    const countryName = this.capitalize(country.trim());
+    if (lookup.byCountry(countryName) !== null) {
+      const countryCode = lookup.byCountry(countryName).iso2;
+      return `${cityName}, ${countryCode}`;
+    } else return `${cityName}`;
+  }
+
+  capitalize(str) {
+    const splitStr = str.toLowerCase().split(" ");
+    for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(" ");
   }
 
   async getCurrentWeather(geoLocation) {
@@ -97,11 +119,6 @@ class Controller {
   convertToMph(speed) {
     const valNum = parseFloat(speed);
     return (valNum / 1.609).toFixed(2);
-  }
-
-  startHomePageForecast() {
-    this.getElements().searchBtn.click();
-    this.getElements().input.value = "";
   }
 }
 export default Controller;
