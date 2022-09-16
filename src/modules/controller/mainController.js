@@ -4,6 +4,7 @@ class Controller {
     this.view = view;
     document.body.addEventListener("submit", (e) => this.searchWeather(e));
     document.body.addEventListener("input", () => this.checkInput());
+    window.addEventListener("load", (e) => this.startHomePageForecast(e));
   }
 
   getElements() {
@@ -14,8 +15,10 @@ class Controller {
     const main = document.querySelector(".container");
     const span = document.querySelectorAll(".form__notFound")[0];
     const switchBtn = document.querySelector(".switch input");
+    const loadDiv = document.getElementsByClassName("container__loader")[0];
+    const searchBtn = document.querySelector('[alt="Search"]');
 
-    return { input, degreeBig, degreeSmall, wind, main, span, switchBtn };
+    return { input, degreeBig, degreeSmall, wind, main, span, switchBtn, loadDiv, searchBtn };
   }
 
   checkInput() {
@@ -25,17 +28,19 @@ class Controller {
   async searchWeather(e) {
     e.preventDefault();
     if (!this.getElements().input.validity.valid) return this.view.showEmptyError(this.getElements().span);
+    this.view.showContent(2);
     const geoLocation = await this.getGeoLocation();
     if (typeof geoLocation === "undefined") {
+      this.getElements().loadDiv.remove();
       return this.view.showUnknownCityError(this.getElements().span);
     }
     const currentWeather = await this.getCurrentWeather(geoLocation);
     const eightDaysWeather = await this.getEightDaysWeather(geoLocation);
-    if (this.getElements().main.hasChildNodes()) this.view.deleteForecast(this.getElements().main);
-    this.view.showForecast(0);
+    if (this.getElements().main.hasChildNodes()) this.view.deleteContent(this.getElements().main);
+    this.view.showContent(0);
     this.getElements().switchBtn.addEventListener("click", (e) => this.changeUnits(e));
     this.model.createMainCard(currentWeather, geoLocation);
-    this.view.showForecast(1);
+    this.view.showContent(1);
     this.model.createEightDaysCard(eightDaysWeather);
     this.view.changeBackground(currentWeather);
   }
@@ -58,11 +63,11 @@ class Controller {
   changeUnits() {
     if (this.getElements().degreeBig.classList.contains("celsius--big")) {
       this.getElements().degreeBig.textContent = this.convertToFahrenheit(this.getElements().degreeBig.textContent);
-      this.getElements().wind.textContent = this.convertToMph(this.getElements().wind.textContent) + " mph";
+      this.getElements().wind.textContent = `${this.convertToMph(this.getElements().wind.textContent)} mph`;
     }
     if (this.getElements().degreeBig.classList.contains("fahrenheit--big")) {
       this.getElements().degreeBig.textContent = this.convertToCelsius(this.getElements().degreeBig.textContent);
-      this.getElements().wind.textContent = this.convertToKmh(this.getElements().wind.textContent) + " km/h";
+      this.getElements().wind.textContent = `${this.convertToKmh(this.getElements().wind.textContent)} km/h`;
     }
     this.getElements().degreeBig.classList.toggle("celsius--big");
     this.getElements().degreeBig.classList.toggle("fahrenheit--big");
@@ -73,21 +78,30 @@ class Controller {
       element.classList.toggle("fahrenheit");
     }
   }
+
   convertToCelsius(degree) {
     const valNum = parseFloat(degree);
     return Math.round((valNum - 32) / 1.8);
   }
+
   convertToFahrenheit(degree) {
     const valNum = parseFloat(degree);
     return Math.round(valNum * 1.8 + 32);
   }
+
   convertToKmh(speed) {
     const valNum = parseFloat(speed);
     return (valNum * 1.609).toFixed(2);
   }
+
   convertToMph(speed) {
     const valNum = parseFloat(speed);
     return (valNum / 1.609).toFixed(2);
+  }
+
+  startHomePageForecast() {
+    this.getElements().searchBtn.click();
+    this.getElements().input.value = "";
   }
 }
 export default Controller;
