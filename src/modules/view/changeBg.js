@@ -4,15 +4,15 @@ import fewCloudsDay from "../../images/few-clouds/aziz-ayad-NJDyFoXDAus-unsplash
 import fewCloudsNight from "../../images/few-clouds/sid-soni-D8VwM3N5xz4-unsplash.jpg";
 import scatteredCloudsDay from "../../images/scattered-clouds/nick-fewings-ZtDiJzokZi0-unsplash.jpeg";
 import scatteredCloudsNight from "../../images/scattered-clouds/herrmann-stamm-4vmjOLf9edk-unsplash.jpeg";
-//import brokenCloudsDay from "../../images/broken-clouds/raychel-sanner-cswvKS59E90-unsplash.jpeg";
+import brokenCloudsDay from "../../images/broken-clouds/raychel-sanner-cswvKS59E90-unsplash.jpeg";
 import brokenCloudsNight from "../../images/broken-clouds/anandu-vinod-pbxwxwfI0B4-unsplash.jpg";
 import showerRainDay from "../../images/shower-rain/nic-y-c-CrXuYxfOJ4I-unsplash.jpg";
 import showerRainNight from "../../images/shower-rain/kyle-szegedi-JSmc0GmSV1o-unsplash.jpg";
 import rainDay from "../../images/rain/simon-kuznetsov-igQx3ETkKZY-unsplash.jpeg";
 import rainNight from "../../images/rain/stormseeker-vRCZ3DztaoA-unsplash.jpg";
-import thunderstormDay from "../../images/thunderstorm/raychel-sanner-LCswFCnyE6Y-unsplash.jpg"; // too many details bottom part
+import thunderstormDay from "../../images/thunderstorm/raychel-sanner-LCswFCnyE6Y-unsplash.jpg";
 import thunderstormNight from "../../images/thunderstorm/michal-mancewicz-R9L7ukhBSgs-unsplash.jpeg";
-import snowDay from "../../images/snow/nathan-fertig-_o_Nw3H21Js-unsplash.jpg"; // too white/dark bottom
+import snowDay from "../../images/snow/daniel-mirlea-oIZUFJW8VhE-unsplash.jpeg";
 import snowNight from "../../images/snow/alex-teplitz-I-Tg2H84mos-unsplash.jpg";
 import mistDay from "../../images/mist/chris-leipelt-kWd5ER2XpSg-unsplash.jpeg";
 import mistNight from "../../images/mist/daniil-onischenko-3C6DIGvZfEw-unsplash.jpeg";
