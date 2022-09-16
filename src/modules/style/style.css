@@ -4,7 +4,6 @@
 :root {
   font-size: 62.5%; /* To turn 1rem into 10px */
   --light-black-color: #393939;
-
   --shadow: 1px 2px 4px rgb(0 0 0 / 51%);
 }
 
@@ -26,10 +25,69 @@ body {
   color: #ffffff;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: flex-end;
   padding: 3rem 4rem;
+}
+
+[for="city-name"] {
+  visibility: hidden;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 2px solid #f5f5f5;
+  border-radius: 2px;
+}
+
+::placeholder {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+#city-name {
+  width: 29rem;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 7px 3.4rem 7px 1rem;
+  color: #ffffff;
+  font-size: 1.6rem;
+  border-radius: 5px 5px 0 0;
+  background-color: rgb(0 0 0 / 25%);
+  text-transform: capitalize;
+}
+
+[type="image"] {
+  position: absolute;
+  right: 0;
+  padding: 7px;
+  transition: all 0.2s ease;
+}
+
+[type="image"]:active {
+  transform: scale(0.9);
+}
+
+.error--active {
+  display: block !important;
+  position: absolute;
+  font-size: 1.3rem;
+  max-width: 30rem;
+  mix-blend-mode: difference; /* Specifies how an element's content should blend with its direct parent background. */
+  text-shadow: 0.2px 0 0 currentColor;
+}
+
+/* Main */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-shadow: var(--shadow);
 }
 
 .card {
@@ -73,6 +131,7 @@ header {
   padding-left: 2.6rem;
   justify-content: space-between;
 }
+
 .details__feelsLike {
   position: relative;
 }
@@ -85,13 +144,6 @@ header {
   content: "WIND: ";
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-shadow: var(--shadow);
-}
-
 .dailyContainer {
   display: flex;
   justify-content: space-between;
@@ -101,7 +153,7 @@ header {
 }
 
 .dailyContainer--white {
-  background-color: rgba(255, 255, 255, 30%);
+  background-color: rgba(255, 255, 255, 40%);
 }
 
 .dailyContainer--black {
@@ -125,10 +177,6 @@ h3 {
   margin-bottom: 0.4rem;
   font-size: 3rem;
   font-weight: 700;
-}
-
-[alt="Condition"] {
-  height: 70px;
 }
 
 .celsius::after {
@@ -161,7 +209,44 @@ h3 {
   font-size: 3rem;
 }
 
-/* The switch - the box around the slider */
+[alt="Condition"] {
+  height: 70px;
+}
+
+/* Loading component*/
+.container__loader {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.625);
+  z-index: 1;
+}
+
+.loader__component {
+  border: 16px solid gray;
+  border-top: 16px solid rgb(92 210 255);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* The switch */
 .switch {
   position: absolute;
   display: inline-block;
@@ -171,14 +256,12 @@ h3 {
   top: 5px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
-  opacity: 0;
+  opacity: 0; /* Hide default HTML checkbox */
   width: 0;
   height: 0;
 }
 
-/* The switcher */
 .slider {
   position: absolute;
   top: 0;
@@ -217,52 +300,4 @@ input:checked + .slider::before {
   -ms-transform: translateX(17px);
   transform: translateX(17px);
   content: "°F";
-}
-
-::placeholder {
-  color: #ffffff;
-  opacity: 0.9;
-}
-
-[for="city-name"] {
-  visibility: hidden;
-}
-
-#city-name {
-  width: 28rem;
-  height: 100%;
-  border: none;
-  outline: none;
-  padding: 7px 3.4rem 7px 1rem;
-  color: #ffffff;
-  font-size: 1.6rem;
-  border-radius: 5px 5px 0 0;
-  background-color: rgb(0 0 0 / 25%);
-  text-transform: capitalize;
-}
-
-.searchBox {
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-bottom: 2px solid #f5f5f5;
-  border-radius: 2px;
-}
-
-[type="image"] {
-  position: absolute;
-  right: 0;
-  padding: 7px;
-  transition: all 0.2s ease;
-}
-
-[type="image"]:active {
-  transform: scale(0.9);
-}
-
-.error--active {
-  display: block !important;
-  position: absolute;
-  font-size: 1.3rem;
-  max-width: 28rem;
 }
