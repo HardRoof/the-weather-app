@@ -90,6 +90,19 @@ header {
   text-shadow: var(--shadow);
 }
 
+.container__logoBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 26px;
+  color: #ff8f32;
+  text-shadow: 0 0 black;
+  mix-blend-mode: difference;
+}
+
 .card {
   position: relative;
   width: max-content;
