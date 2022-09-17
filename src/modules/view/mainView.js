@@ -5,13 +5,19 @@ import image2 from "../../images/home/greg-rosenke-J90VAXIQK88-unsplash.jpeg";
 import image3 from "../../images/home/ian-dooley-DuBNA1QMpPA-unsplash.jpeg";
 import image4 from "../../images/home/john-fowler-RsRTIofe0HE-unsplash.jpeg";
 import image5 from "../../images/home/simon-berger-twukN12EN7c-unsplash.jpg";
+import image6 from "../../images/home/caleb-stokes-pY1FKeEP8v8-unsplash.jpg";
+import image7 from "../../images/home/willian-justen-de-vasconcellos-jOF2TFSNxQI-unsplash.jpeg";
+import image8 from "../../images/home/abednego-s-g-h7FysA92Jww-unsplash.jpeg";
+import image9 from "../../images/home/nidheesh-kavalan-Ha501MB_XE8-unsplash.jpeg";
+import image10 from "../../images/home/wladislaw-sokolowskij-0vw4InAC-yM-unsplash.jpg";
+import image11 from "../../images/home/billy-huynh-PHB9CK5K7js-unsplash.jpeg";
 
 class View {
   constructor() {}
 
   setHomePageBg() {
-    const randomNumber = Math.floor(Math.random() * 6);
-    const images = [image0, image1, image2, image3, image4, image5];
+    const randomNumber = Math.floor(Math.random() * 12);
+    const images = [image0, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11];
     document.body.style.background = `url(${images[randomNumber]}) no-repeat center center`;
     document.body.style.backgroundSize = "cover";
   }
@@ -38,7 +44,7 @@ class View {
   }
 
   showUnknownCityError(span) {
-    span.textContent = '✖ Location not found. Please try another city or matching format: "City" or "City, Country"';
+    span.textContent = '✖ Location not found. Please try another city or matching format: "City" or "City, Country".';
     span.classList.add("error--active");
   }
 
