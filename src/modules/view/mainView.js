@@ -9,7 +9,7 @@ import image6 from "../../images/home/caleb-stokes-pY1FKeEP8v8-unsplash.jpg";
 import image7 from "../../images/home/willian-justen-de-vasconcellos-jOF2TFSNxQI-unsplash.jpeg";
 import image8 from "../../images/home/abednego-s-g-h7FysA92Jww-unsplash.jpeg";
 import image9 from "../../images/home/nidheesh-kavalan-Ha501MB_XE8-unsplash.jpeg";
-import image10 from "../../images/home/wladislaw-sokolowskij-0vw4InAC-yM-unsplash.jpg";
+import image10 from "../../images/home/goran-backman-ng6ZSJQTKoA-unsplash.jpeg";
 import image11 from "../../images/home/billy-huynh-PHB9CK5K7js-unsplash.jpeg";
 
 class View {
