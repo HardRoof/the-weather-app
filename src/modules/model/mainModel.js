@@ -10,7 +10,7 @@ class Model {
 
   async fetchGeoLocation(searchText) {
     try {
-      const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchText}&appid=${this.key}`;
+      const URL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchText}&appid=${this.key}`;
       const response = await fetch(URL, { mode: "cors" });
       const data = await response.json();
       return data[0];
