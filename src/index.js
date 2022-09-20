@@ -1,4 +1,4 @@
-import "./modules/style/style.css";
+import "./styles/style.css";
 import Model from "./modules/model/mainModel";
 import View from "./modules/view/mainView";
 import Controller from "./modules/controller/mainController";
