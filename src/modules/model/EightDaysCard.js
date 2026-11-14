@@ -11,7 +11,7 @@ class EightDaysCard {
     for (let i = 0; i < this.data.daily.length; i++) {
       maxTemp[i].textContent = Math.round(this.data.daily[i].temp.max);
       minTemp[i].textContent = Math.round(this.data.daily[i].temp.min);
-      img[i].src = `http://openweathermap.org/img/wn/${this.data.daily[i].weather[0].icon}@2x.png`;
+      img[i].src = `https://openweathermap.org/img/wn/${this.data.daily[i].weather[0].icon}@2x.png`;
       const dayOfWeek = this.getDayOfWeek(new Date(this.data.daily[i].dt * 1000).getDay()); // Turns Unix Timestamp to week day
       day[i].textContent = dayOfWeek;
     }

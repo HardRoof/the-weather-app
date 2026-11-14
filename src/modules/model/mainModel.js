@@ -29,14 +29,42 @@ class Model {
     return data;
   }
 
+  // Daily forecast from Open-Meteo (free, no key). OpenWeather closed the
+  // free One Call 2.5 API this used before.
   async fetchEightDaysWeather(lat, lon) {
-    const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely,alerts&units=metric&appid=20f7632ffc2c022654e4093c6947b4f4`;
+    const URL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=8`;
     const response = await fetch(URL, { mode: "cors" });
     if (!response.ok) {
       throw Error(response.status);
     }
     const data = await response.json();
-    return data;
+    return this.toDailyForecast(data);
+  }
+
+  // Reshapes Open-Meteo's answer into what EightDaysCard reads
+  toDailyForecast(data) {
+    const daily = data.daily.time.map((date, i) => ({
+      dt: new Date(`${date}T12:00:00`).getTime() / 1000,
+      temp: { max: data.daily.temperature_2m_max[i], min: data.daily.temperature_2m_min[i] },
+      weather: [{ icon: this.iconFromWeatherCode(data.daily.weather_code[i]) }],
+    }));
+    return { daily };
+  }
+
+  // WMO weather code to the OpenWeather icon the cards show
+  iconFromWeatherCode(code) {
+    if (code === 0) return "01d"; // clear
+    if (code === 1) return "02d"; // mainly clear
+    if (code === 2) return "03d"; // partly cloudy
+    if (code === 3) return "04d"; // overcast
+    if (code === 45 || code === 48) return "50d"; // fog
+    if (code >= 51 && code <= 57) return "09d"; // drizzle
+    if (code >= 61 && code <= 67) return "10d"; // rain
+    if (code >= 71 && code <= 77) return "13d"; // snow
+    if (code >= 80 && code <= 82) return "09d"; // rain showers
+    if (code === 85 || code === 86) return "13d"; // snow showers
+    if (code >= 95) return "11d"; // thunderstorm
+    return "03d";
   }
 
   createMainCard(currentWeather, geoLocation) {
