@@ -317,10 +317,20 @@ input:checked + .slider::before {
 
 /* Phones */
 @media (max-width: 600px) {
+  /* The page is exactly one screen tall and never scrolls; only the
+     weather card (if it's too tall) and the forecast strip do */
+  html {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+    background-color: #1f2a36;
+  }
+
   body {
-    height: auto;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    overscroll-behavior: none;
     grid-template-columns: minmax(0, 1fr); /* or the forecast strip widens the page */
   }
 
@@ -359,6 +369,22 @@ input:checked + .slider::before {
     margin: auto;
     padding-bottom: 8rem;
     font-size: 2.4rem;
+  }
+
+  .container {
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .dailyContainer {
+    flex-shrink: 0;
+  }
+
+  /* Keeps each small degree sign with its number when the strip is swiped */
+  .dailyCard__max,
+  .dailyCard__min {
+    position: relative;
   }
 
   .card {
